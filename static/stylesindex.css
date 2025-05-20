@@ -1,0 +1,106 @@
+/* Sugerencia para styles.css */
+.tabla-libros {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tabla-libros th,
+.tabla-libros td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.tabla-libros th {
+    background-color: #f2f2f2;
+}
+
+.btn-agregar {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 6px 12px;
+    background: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.btn-editar {
+    color: #fff;
+    background: #2196f3;
+    padding: 4px 8px;
+    text-decoration: none;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.btn-eliminar {
+    color: #fff;
+    background: #f44336;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Sugerencia para stylesindex.css */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 10px 0;
+    width: 100vw;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.navbar ul {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que los elementos bajen en pantallas pequeñas */
+    justify-content: flex-start;
+}
+
+.navbar li {
+    margin-right: 20px;
+    margin-bottom: 8px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 12px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    font-size: 16px;
+    z-index: 100;
+}
