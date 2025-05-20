@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Agregar Libro</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Agregar Libro</h1>
+    <form method="POST">
+      {{ forma.hidden_tag() }} {{ forma.titulo.label }} {{ forma.titulo }} {{
+      forma.autor.label }} {{ forma.autor }} {{ forma.categoria.label }} {{
+      forma.categoria }} {{ forma.enviar }}
+      <a href="{{ url_for('inicio') }}" class="btn-cancelar">Cancelar</a>
+    </form>
+  </body>
+</html>

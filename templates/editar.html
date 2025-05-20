@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Libro</title>
+</head>
+<body>
+    <h1>Editar Libro</h1>
+    <form method="POST">
+        {{ forma.hidden_tag() }}
+        {{ forma.titulo.label }} {{ forma.titulo }}
+        {{ forma.autor.label }} {{ forma.autor }}
+        {{ forma.categoria.label }} {{ forma.categoria }}
+        {{ forma.enviar }}
+    </form>
+</body>
+</html>
