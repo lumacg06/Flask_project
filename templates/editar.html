@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Editar Libro</title>
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='stylesagregar.css') }}"
+    />
+  </head>
+  <body>
     <h1>Editar Libro</h1>
-    <form method="POST">
-        {{ forma.hidden_tag() }}
-        {{ forma.titulo.label }} {{ forma.titulo }}
-        {{ forma.autor.label }} {{ forma.autor }}
-        {{ forma.categoria.label }} {{ forma.categoria }}
-        {{ forma.enviar }}
+    <form method="POST" class="form-agregar">
+      {{ forma.hidden_tag() }}
+      <label>{{ forma.titulo.label }}</label>
+      {{ forma.titulo }}
+      <label>{{ forma.autor.label }}</label>
+      {{ forma.autor }}
+      <label>{{ forma.categoria.label }}</label>
+      {{ forma.categoria }}
+      <label>{{ forma.precio.label }}</label>
+      {{ forma.precio }} {{ forma.enviar }}
+      <a href="{{ url_for('inicio') }}" class="btn-cancelar">Cancelar</a>
     </form>
-</body>
+  </body>
 </html>

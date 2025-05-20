@@ -9,11 +9,21 @@
   </head>
   <body>
     <h1>Agregar Libro</h1>
-    <form method="POST">
-      {{ forma.hidden_tag() }} {{ forma.titulo.label }} {{ forma.titulo }} {{
-      forma.autor.label }} {{ forma.autor }} {{ forma.categoria.label }} {{
-      forma.categoria }} {{ forma.enviar }}
-      <a href="{{ url_for('inicio') }}" class="btn-cancelar">Cancelar</a>
+    <form method="POST" class="form-agregar" enctype="multipart/form-data">
+  {{ forma.hidden_tag() }}
+  <label>{{ forma.titulo.label }}</label>
+  {{ forma.titulo }}
+  <label>{{ forma.autor.label }}</label>
+  {{ forma.autor }}
+  <label>{{ forma.categoria.label }}</label>
+  {{ forma.categoria }}
+  <label>{{ forma.precio.label }}</label>
+  {{ forma.precio }}
+  <label>{{ forma.portada.label }}</label>
+  {{ forma.portada }}
+  {{ forma.enviar }}
+  <a href="{{ url_for('inicio') }}" class="btn-cancelar">Cancelar</a>
+</form>
     </form>
   </body>
 </html>
