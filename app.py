@@ -4,7 +4,9 @@ from flask_migrate import Migrate
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
-
+from flask_wtf.file import FileField, FileAllowed
+import os
+from werkzeug.utils import secure_filename
 # Configuración de la aplicación Flask
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'clave_secreta_super_segura'
@@ -25,6 +27,8 @@ class Libro(db.Model):
     titulo = db.Column(db.String(100), nullable=False)
     autor = db.Column(db.String(100), nullable=False)
     categoria = db.Column(db.String(100), nullable=False)
+    precio = db.Column(db.String(20), nullable=False, server_default='0')
+    portada = db.Column(db.String(200), nullable=False)
 
     def __repr__(self):
         return f'<Libro {self.titulo}>'
@@ -34,7 +38,9 @@ class LibroForm(FlaskForm):
     titulo = StringField('Título', validators=[DataRequired()])
     autor = StringField('Autor', validators=[DataRequired()])
     categoria = StringField('Categoría', validators=[DataRequired()])
-    enviar = SubmitField('Guardar')
+    precio = StringField('Precio', validators=[DataRequired()])
+    portada = FileField('Portada', validators=[FileAllowed(['jpg', 'jpeg', 'png'], 'Solo imágenes')])
+    enviar = SubmitField('Agregar')
 
 # Ruta de inicio: Listar libros
 @app.route('/')
@@ -46,14 +52,24 @@ def inicio():
 # Ruta para agregar un libro
 @app.route('/agregar', methods=['GET', 'POST'])
 def agregar():
-    libro = Libro()
-    libro_form = LibroForm(obj=libro)
-    if request.method == 'POST' and libro_form.validate_on_submit():
-        libro_form.populate_obj(libro)
+    form = LibroForm()
+    if form.validate_on_submit():
+        filename = None
+        if form.portada.data:
+            filename = secure_filename(form.portada.data.filename)
+            ruta = os.path.join('static/portadas', filename)
+            form.portada.data.save(ruta)
+        libro = Libro(
+            titulo=form.titulo.data,
+            autor=form.autor.data,
+            categoria=form.categoria.data,
+            precio=form.precio.data,
+            portada=filename
+        )
         db.session.add(libro)
         db.session.commit()
         return redirect(url_for('inicio'))
-    return render_template('agregar.html', forma=libro_form)
+    return render_template('agregar.html', forma=form)
 
 # Ruta para editar un libro
 @app.route('/editar/<int:id>', methods=['GET', 'POST'])
@@ -73,6 +89,12 @@ def eliminar(id):
     db.session.delete(libro)
     db.session.commit()
     return redirect(url_for('inicio'))
+
+# Ruta para el catálogo de libros
+@app.route('/catalogo')
+def catalogo():
+    libros = Libro.query.all()
+    return render_template('catalogo.html', libros=libros)
 
 # Manejo de errores
 @app.errorhandler(404)

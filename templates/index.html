@@ -12,11 +12,12 @@
       <ul>
         <li><a href="{{ url_for('inicio') }}">Inicio</a></li>
         <li><a href="{{ url_for('agregar') }}">Agregar Libro</a></li>
+        <li><a href="{{ url_for('catalogo') }}">Catálogo</a></li>
         <!-- Puedes agregar más enlaces aquí -->
       </ul>
     </nav>
-    <h1>Gestión de Libros</h1>
-    <p>Total de libros: {{ total_libros }}</p>
+    <h1 id="h-index">Gestión de Libros</h1>
+    <p id="p-index">Total de libros: {{ total_libros }}</p>
     <a href="{{ url_for('agregar') }}" class="btn-agregar">Agregar Libro</a>
     <table class="tabla-libros">
       <thead>
@@ -24,6 +25,7 @@
           <th>Título</th>
           <th>Autor</th>
           <th>Categoría</th>
+          <th>Precio</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -33,6 +35,7 @@
           <td>{{ libro.titulo }}</td>
           <td>{{ libro.autor }}</td>
           <td>{{ libro.categoria }}</td>
+          <td>{{ libro.precio }}</td>
           <td>
             <a href="{{ url_for('editar', id=libro.id) }}" class="btn-editar"
               >Editar</a
@@ -50,7 +53,7 @@
       </tbody>
     </table>
     <footer class="footer">
-      <p>&copy; 2025 Gestión de Libros. Todos los derechos reservados.</p>
+      <p id="p-index" class="index">&copy; 2025 Gestión de Libros. Todos los derechos reservados.</p>
     </footer>
   </body>
 </html>

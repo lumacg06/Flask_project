@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Catálogo de Libros</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='stylescatalogo.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='stylesindex.css') }}"
+    />
+  </head>
+  <body>
+      <nav class="navbar">
+      <ul>
+        <li><a href="{{ url_for('inicio') }}">Inicio</a></li>
+        <li><a href="{{ url_for('agregar') }}">Agregar Libro</a></li>
+        <!-- Puedes agregar más enlaces aquí -->
+      </ul>
+    </nav>
+    <h1>Catálogo de Libros</h1>
+    <div class="catalogo">
+      {% for libro in libros %}
+      <div class="libro">
+        {% if libro.portada %}
+        <img
+          src="{{ url_for('static', filename='portadas/' ~ libro.portada) }}"
+          alt="Portada"
+          class="portada"
+        />
+        {% else %}
+        <img
+          src="{{ url_for('static', filename='portadas/default.jpg') }}"
+          alt="Sin portada"
+          class="portada"
+        />
+        {% endif %}
+        <h3>{{ libro.titulo }}</h3>
+        <p id="autor-catalogo" class="p-catalogo">{{ libro.autor }}</p>
+        <p id="categoria-catalogo" class="p-catalogo">{{ libro.categoria }}</p>
+        <p id="precio-catalogo" class="p-catalogo">${{ libro.precio }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <footer class="footer">
+      <p id="p-index" class="index">&copy; 2025 Gestión de Libros. Todos los derechos reservados.</p>
+    </footer>
+  </body>
+</html>

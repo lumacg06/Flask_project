@@ -1,4 +1,12 @@
 /* Sugerencia para styles.css */
+#h-index{
+    text-align: center;
+}
+#p-index
+{
+    text-align: center;
+    color: #03A9F4;
+}
 .tabla-libros {
     width: 100%;
     border-collapse: collapse;
@@ -24,6 +32,7 @@
     color: #fff;
     text-decoration: none;
     border-radius: 4px;
+    margin-left: 1px;
 }
 
 .btn-editar {
@@ -39,7 +48,7 @@
     color: #fff;
     background: #f44336;
     border: none;
-    padding: 4px 8px;
+    padding: 5px 8px;
     border-radius: 3px;
     cursor: pointer;
 }
@@ -85,11 +94,11 @@ body {
 .navbar a {
     color: #fff;
     text-decoration: none;
-    font-weight: bold;
+    
 }
 
 .navbar a:hover {
-    text-decoration: underline;
+   color: aqua;
 }
 
 .footer {
