@@ -2,26 +2,55 @@
 <html>
   <head>
     <title>Gestión de Libros</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='stylesindex.css') }}"
+    />
   </head>
   <body>
+    <nav class="navbar">
+      <ul>
+        <li><a href="{{ url_for('inicio') }}">Inicio</a></li>
+        <li><a href="{{ url_for('agregar') }}">Agregar Libro</a></li>
+        <!-- Puedes agregar más enlaces aquí -->
+      </ul>
+    </nav>
     <h1>Gestión de Libros</h1>
     <p>Total de libros: {{ total_libros }}</p>
-    <a href="{{ url_for('agregar') }}">Agregar Libro</a>
-    <ul>
-      {% for libro in libros %}
-      <li>
-        {{ libro.titulo }} - {{ libro.autor }} ({{ libro.categoria }})
-        <a href="{{ url_for('editar', id=libro.id) }}">Editar</a>
-        <form
-          action="{{ url_for('eliminar', id=libro.id) }}"
-          method="POST"
-          style="display: inline"
-        >
-          <button type="submit">Eliminar</button>
-        </form>
-      </li>
-      {% endfor %}
-    </ul>
+    <a href="{{ url_for('agregar') }}" class="btn-agregar">Agregar Libro</a>
+    <table class="tabla-libros">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Categoría</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for libro in libros %}
+        <tr>
+          <td>{{ libro.titulo }}</td>
+          <td>{{ libro.autor }}</td>
+          <td>{{ libro.categoria }}</td>
+          <td>
+            <a href="{{ url_for('editar', id=libro.id) }}" class="btn-editar"
+              >Editar</a
+            >
+            <form
+              action="{{ url_for('eliminar', id=libro.id) }}"
+              method="POST"
+              style="display: inline"
+            >
+              <button type="submit" class="btn-eliminar">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <footer class="footer">
+      <p>&copy; 2025 Gestión de Libros. Todos los derechos reservados.</p>
+    </footer>
   </body>
 </html>
