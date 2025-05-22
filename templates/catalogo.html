@@ -13,6 +13,12 @@
   </head>
   <body>
       <nav class="navbar">
+      <a href="{{ url_for('inicio') }}" class="logo-navbar">
+        <img
+          src="{{ url_for('static', filename='Logo pf.png') }}"
+          alt="Logo Libros"
+          id="logo-navbar"
+        />
       <ul>
         <li><a href="{{ url_for('inicio') }}">Inicio</a></li>
         <li><a href="{{ url_for('agregar') }}">Agregar Libro</a></li>

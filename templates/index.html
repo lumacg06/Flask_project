@@ -9,6 +9,13 @@
   </head>
   <body>
     <nav class="navbar">
+      <a href="{{ url_for('inicio') }}" class="logo-navbar">
+        <img
+          src="{{ url_for('static', filename='Logo pf.png') }}"
+          alt="Logo Libros"
+          id="logo-navbar"
+        />
+      </a>
       <ul>
         <li><a href="{{ url_for('inicio') }}">Inicio</a></li>
         <li><a href="{{ url_for('agregar') }}">Agregar Libro</a></li>
@@ -53,7 +60,9 @@
       </tbody>
     </table>
     <footer class="footer">
-      <p id="p-index" class="index">&copy; 2025 Gestión de Libros. Todos los derechos reservados.</p>
+      <p id="p-index" class="index">
+        &copy; 2025 Páginas Perdidas. Todos los derechos reservados.
+      </p>
     </footer>
   </body>
 </html>
